@@ -1,0 +1,26 @@
+﻿@using AngularSpa.Infrastructure
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div data-ng-app="admin.assemblies">
+    <div data-ng-view=""></div>
+
+    @using (Html.AngularTemplate("admin-assemblies-list"))
+    {
+        <div data-ng-repeat="assembly in assemblies">
+            <strong>{{ assembly.FileName }}</strong> ({{ assembly.Version }})<br />
+            {{ assembly.Comment }}
+        </div>
+    }
+
+</div>
+
+@section Javascript{
+    <script src="~/Scripts/js/app/persons/module.js"></script>
+    <script src="~/Scripts/js/app/persons/config.js"></script>
+    <script src="~/Scripts/js/app/persons/person-service.js"></script>
+    <script src="~/Scripts/js/app/persons/person-list-controller.js"></script>
+}
